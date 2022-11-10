@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class ConsultadeDatos {
     final static String URL = "jdbc:postgresql://localhost:5432/airlines";
     final static String USERNAME = "postgres";
-    final static String PASSWORD = "PjXCkbqlhB";
+    final static String PASSWORD = "221210826";
 
     final static String GREEN = "\u001B[32m";
     final static String RED = "\u001B[31m";
@@ -32,7 +32,7 @@ public class ConsultadeDatos {
             int option, counter;
             do {
                 counter = 1;
-                System.out.println("Elija la ciudad a consultar: ");
+                System.out.println("Ciudad a consultar: ");
                 while(cities.next()){
                     System.out.println("\t"+(counter++)+") "+cities.getString(1).replaceAll("\n", " "));
                 }
@@ -61,11 +61,11 @@ public class ConsultadeDatos {
             }
             vuelos.close();
             c.close();
-            System.out.println(GREEN+"Sesion completada"+RESET);
+            System.out.println(GREEN+" completada "+RESET);
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            System.out.println(RED+"Hubo un error con los resultados"+RESET);
+            System.out.println(RED+" Error con los datos"+RESET);
         }
 
     }
@@ -86,7 +86,7 @@ public class ConsultadeDatos {
             Statement st = c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
             return st.executeQuery(sql);
         }catch(SQLException e){
-            System.out.println(RED+"No se pudo procesar la consulta SQL"+RESET);
+            System.out.println(RED+"Consulta Invalida"+RESET);
             System.out.println(e.getMessage());
             return null;
         }
